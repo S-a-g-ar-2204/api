@@ -4,7 +4,7 @@
     <title>Selection Extractor</title>
     <style>
         body { 
-            /* 1. INCREASED WIDTH */
+            /* 1. INCREASED WIDTH (kept at 500px) */
             width: 500px; 
             min-height: 100px; 
             padding: 10px; 
@@ -12,22 +12,39 @@
             
             /* 2. BACKGROUND IMAGE */
             background-image: url('icon.png');
-            background-size: cover; /* Ensures the image covers the entire body */
+            background-size: cover; 
             background-repeat: no-repeat;
             background-position: center center;
-            color: #E0E0E0; /* Light text for better readability on the dark background */
+            color: #E0E0E0;
         }
         
-        #summarize-button {
+        /* New container for buttons to keep them aligned */
+        #button-container {
+            display: flex;
+            gap: 10px; /* Space between buttons */
+            margin-bottom: 10px;
+        }
+        
+        .action-button { /* General style for all action buttons */
             padding: 8px 12px;
-            background-color: #4CAF50; /* Green */
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            margin-bottom: 10px;
-            /* Added shadow/opacity for better visibility against the background */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); 
+            flex-grow: 1; /* Makes buttons fill the space evenly */
+        }
+        
+        #summarize-button {
+            background-color: #4CAF50; /* Green (Original) */
+        }
+        
+        #deep-summarize-button {
+            background-color: #007bff; /* Blue for the new summarize option */
+        }
+
+        #copy-button {
+            background-color: #6c757d; /* Gray for the copy option */
         }
         
         /* Style for the output area */
@@ -35,20 +52,25 @@
             font-size: 14px; 
             white-space: pre-wrap; 
             word-wrap: break-word; 
-            /* 3. BLENDED LOOK: Semi-transparent background for content */
-            background-color: rgba(255, 255, 255, 0.15); /* Very light, semi-transparent white */
-            backdrop-filter: blur(3px); /* Optional: Adds a subtle blur effect */
-            color: #F0F0F0; /* Light text color for the output */
-            border: 1px solid rgba(255, 255, 255, 0.2); /* Soft, light border */
+            background-color: rgba(255, 255, 255, 0.15); 
+            backdrop-filter: blur(3px); 
+            color: #F0F0F0; 
+            border: 1px solid rgba(255, 255, 255, 0.2); 
             border-radius: 5px;
             padding: 10px;
-            min-height: 70px; /* Slightly larger minimum height */
+            min-height: 70px;
         }
     </style>
 </head>
 <body>
     
-    <button id="summarize-button">Summarize Selected Text</button>
+    <div id="button-container">
+        <button id="summarize-button" class="action-button">Summarize</button>
+        
+        <button id="deep-summarize-button" class="action-button">Deep Summarize</button>
+        
+        <button id="copy-button" class="action-button">Copy</button>
+    </div>
 
     <div id="summary-output">Starting extension...</div>
     
