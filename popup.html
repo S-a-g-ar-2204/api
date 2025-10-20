@@ -3,22 +3,54 @@
 <head>
     <title>Selection Extractor</title>
     <style>
-        /* Basic styling for the popup window */
         body { 
-            width: 300px; 
-            min-height: 100px; /* Gives the box some size */
+            /* 1. INCREASED WIDTH */
+            width: 500px; 
+            min-height: 100px; 
             padding: 10px; 
             font-family: sans-serif;
+            
+            /* 2. BACKGROUND IMAGE */
+            background-image: url('icon.png');
+            background-size: cover; /* Ensures the image covers the entire body */
+            background-repeat: no-repeat;
+            background-position: center center;
+            color: #E0E0E0; /* Light text for better readability on the dark background */
         }
-        #message { 
+        
+        #summarize-button {
+            padding: 8px 12px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            /* Added shadow/opacity for better visibility against the background */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); 
+        }
+        
+        /* Style for the output area */
+        #summary-output { 
             font-size: 14px; 
-            white-space: pre-wrap; /* Honors line breaks */
-            word-wrap: break-word; /* Prevents overflow */
+            white-space: pre-wrap; 
+            word-wrap: break-word; 
+            /* 3. BLENDED LOOK: Semi-transparent background for content */
+            background-color: rgba(255, 255, 255, 0.15); /* Very light, semi-transparent white */
+            backdrop-filter: blur(3px); /* Optional: Adds a subtle blur effect */
+            color: #F0F0F0; /* Light text color for the output */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Soft, light border */
+            border-radius: 5px;
+            padding: 10px;
+            min-height: 70px; /* Slightly larger minimum height */
         }
     </style>
 </head>
 <body>
-    <div id="message">Loading last selection...</div>
+    
+    <button id="summarize-button">Summarize Selected Text</button>
+
+    <div id="summary-output">Starting extension...</div>
     
     <script src="popup.js"></script>
 </body>
